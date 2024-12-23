@@ -22,10 +22,12 @@ A simple and responsive calculator built using React.js. This project demonstrat
    ```bash
    git clone https://github.com/007Dharmjit/calculator.git
    cd calculator/frontend
-2.Install Dependencies
-      npm install
-3. Run the Application
-      npm start
+2. **Install Dependencies**
+   ```bash
+   npm install
+3. **Run the Application**
+   ```bash
+   npm start
 4. Open your browser and navigate to http://localhost:3000
 
 🧮 Usage
@@ -36,20 +38,18 @@ Use C to clear the display.
 🤝 Contributing
 Contributions are welcome! Follow these steps to contribute:
 
-Fork the project.
-Create a feature branch:
-bash
-Copy code
-git checkout -b feature/your-feature-name
-Commit your changes:
-bash
-Copy code
-git commit -m "Add your message"
-Push to the branch:
-bash
-Copy code
-git push origin feature/your-feature-name
+1. **Fork the project.**
+2. **Create a feature branch:**
+   ```bash
+   git checkout -b feature/your-feature-name
+3. **Commit your changes:**
+   ```bash
+   git commit -m "Add your message"
+4. **Push to the branch:**
+   ```bash
+   git push origin feature/your-feature-name
 Open a pull request.
+
 📜 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
@@ -57,11 +57,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Dharmjit Chauhan
 
 GitHub: 007Dharmjit
-LinkedIn: Your LinkedIn Profile
-📷 Screenshots
-Desktop View
-
-Mobile View
 
 ✨ Acknowledgments
 Inspired by classic calculator designs.
