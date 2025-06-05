@@ -16,6 +16,11 @@ A simple and responsive calculator built using React.js. This project demonstrat
 - **CSS**: For styling and responsive design.
 - **JavaScript (ES6)**: For implementing logic and interactivity.
 
+
+## 🚀 Live Demo
+🔗 [Live Demo](https://calculatorbydharmjit.netlify.app/)
+
+
 ## 📦 Installation
 
 1. **Clone the Repository**
