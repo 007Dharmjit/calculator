@@ -1,77 +1,84 @@
-"use client"
-import React, { useState } from "react";
-
-import axios from "axios";
+/* eslint-disable no-eval */
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [disdata, setDisdata] = useState(""); // Store input as a string instead of an array
+  const [input, setInput] = useState("0");
+  const [resetNext, setResetNext] = useState(false);
 
-
-  const getData = (e) => {
-    const data = e.target.innerHTML;
-
-    // Check if the clicked value is a number or operator and append it to the input
-    if (data.length < 4 && data !== "AC" && data !== "DEL" && data !== "=") {
-      setDisdata((prevData) => prevData + data);
-    }
-
-    // Handle 'AC' (clear)
-    if (data === "AC") {
-      setDisdata("");
-    }
-
-    // Handle 'DEL' (delete last character)
-    if (data === "DEL") {
-      setDisdata((prevData) => prevData.slice(0, -1));
-    }
-
-    // Handle '=' (evaluate the expression)
-    if (data === "=") {
+  const handleClick = (value) => {
+    if (!isNaN(value) || value === ".") {
+      if (input === "0" || resetNext) {
+        setInput(value);
+        setResetNext(false);
+      } else {
+        setInput((prev) => prev + value);
+      }
+    } else if (value === "AC") {
+      setInput("0");
+    } else if (value === "DEL") {
+      setInput((prev) => prev.length === 1 ? "0" : prev.slice(0, -1));
+    } else if (["+", "-", "*", "/", "%"].includes(value)) {
+      if (!["+", "-", "*", "/", "%"].includes(input.slice(-1))) {
+        setInput((prev) => prev + value);
+      }
+    } else if (value === "=") {
       try {
-        // eslint-disable-next-line no-eval
-        setDisdata(eval(disdata).toString()); // Evaluate the expression and set the result
-      } catch (error) {
-        setDisdata("Error");
+        const result = eval(input).toString();
+        setInput(result);
+        setResetNext(true);
+      } catch {
+        setInput("Error");
+        setResetNext(true);
       }
     }
   };
 
+  const buttons = [
+    "AC", "%", "DEL", "/",
+    "7", "8", "9", "*",
+    "4", "5", "6", "-",
+    "1", "2", "3", "+",
+    "00", "0", ".", "="
+  ];
+
   return (
-    <>
-      <div className="container h-screen w-screen bg-black text-white flex justify-center items-center">
-        <div className="databox bg-zinc-800 h-fit w-[400px] p-5 rounded">
-          <div className="w-full h-14 rounded px-2 py-1 justify-end flex bg-zinc-600">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="calculator-container rounded-3xl overflow-hidden w-full max-w-md border border-gray-700">
+        <div className="display p-6">
+          <div className="bg-gray-800/80 rounded-xl p-5 shadow-inner">
             <input
+              type="text"
+              className="w-full bg-transparent text-right text-4xl font-bold text-white display-input outline-none tracking-wider"
+              value={input}
               disabled
-              value={disdata}
-              className="h-full w-full bg-transparent outline-none"
             />
           </div>
-          <div className="button grid grid-cols-4">
-            <p onClick={getData}>AC</p>
-            <p onClick={getData}>%</p>
-            <p onClick={getData}>DEL</p>
-            <p onClick={getData}>/</p>
-            <p onClick={getData}>7</p>
-            <p onClick={getData}>8</p>
-            <p onClick={getData}>9</p>
-            <p onClick={getData}>*</p>
-            <p onClick={getData}>4</p>
-            <p onClick={getData}>5</p>
-            <p onClick={getData}>6</p>
-            <p onClick={getData}>-</p>
-            <p onClick={getData}>1</p>
-            <p onClick={getData}>2</p>
-            <p onClick={getData}>3</p>
-            <p onClick={getData}>+</p>
-            <p onClick={getData}>00</p>
-            <p onClick={getData}>0</p>
-            <p onClick={getData}>.</p>
-            <p onClick={getData}>=</p>
-          </div>
+        </div>
+
+        <div className="button-grid p-6">
+          {buttons.map((btn, i) => {
+            const base = "button font-bold py-5 rounded-xl text-lg";
+            const type = btn === "="
+              ? "equals"
+              : ["+", "-", "*", "/", "%"].includes(btn)
+                ? "operator"
+                : ["AC", "DEL"].includes(btn)
+                  ? "function"
+                  : "number";
+            return (
+              <button
+                key={i}
+                onClick={() => handleClick(btn)}
+                className={`${base} ${type} text-white`}
+              >
+                {btn}
+              </button>
+            );
+          })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

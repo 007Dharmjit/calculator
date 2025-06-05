@@ -2,47 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.button p {
-    background-color:  #35353c ;
-    height: 70px;
-    width: 70px;
-    margin-top: 10px;
-    /* padding: 10px  10px 10px 10px; */
-    border-radius: 50%;
-    text-align: center; 
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    line-height: 70px;
-}   
-
-/* From Uiverse.io by csemszepp */ 
-.container {
-    width: 100%;
-    height:screen;
-    --s: 200px; /* control the size */
-    --c1: #1d1d1d;
-    --c2: #4e4f51;
-    --c3: #3c3c3c;
-  
-    background: repeating-conic-gradient(
-          from 30deg,
-          #0000 0 120deg,
-          var(--c3) 0 180deg
-        )
-        calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
-      repeating-conic-gradient(
-        from 30deg,
-        var(--c1) 0 60deg,
-        var(--c2) 0 120deg,
-        var(--c3) 0 180deg
-      );
-    background-size: var(--s) calc(var(--s) * 0.577);
-
-  }
-  
-  .databox{
-    -webkit-box-shadow: -1px 0px 40px 34px rgba(70, 67, 67, 0.78);
--moz-box-shadow: -1px 0px 40px 34px rgba(70, 67, 67, 0.78);
-box-shadow: -1px 0px 40px 34px rgba(70, 67, 67, 0.78);
-  }
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}

@@ -34,7 +34,7 @@ A simple and responsive calculator built using React.js. This project demonstrat
 Enter numbers using the on-screen keypad.
 Choose an operator (+, -, *, /).
 Press = to calculate the result.
-Use C to clear the display.
+Use AC to clear the display.
 🤝 Contributing
 Contributions are welcome! Follow these steps to contribute:
 
